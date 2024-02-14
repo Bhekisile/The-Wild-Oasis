@@ -1,4 +1,4 @@
-import supabase from "./supabase";
+import supabase, { SUPABASE_URL } from "./supabase";
 
 export async function getCabins() {
   
@@ -14,9 +14,13 @@ export async function getCabins() {
 }
 
 export async function createCabin(newCabin) {
+  const imageName = `${Math.random()}-${newCabin.image.name}`.replaceAll("/", "");
+
+  const imagePath = `${SUPABASE_URL}/storage/v1/object/public/cabin-images/${imageName}`;
+
   const { data, error } = await supabase
   .from('cabins')
-  .insert([newCabin])
+  .insert([{ ...newCabin, image: imagePath }])
 
   if (error) {
     console.error(error);
