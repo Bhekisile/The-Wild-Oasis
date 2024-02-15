@@ -12,7 +12,7 @@ const queryClient = useQueryClient();
     onSuccess: () => {
       toast.success("Cabin successfully edited");
       queryClient.invalidateQueries({ queryKey: ["cabins"] });
-      reset();
+    //   reset();
     },
     onError: (err) => toast.error(err.message),
   });

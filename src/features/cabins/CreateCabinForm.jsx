@@ -18,22 +18,20 @@ function CreateCabinForm({ cabinToEdit={} }) {
   });
 
   const { errors } = formState;
-
   const { isCreating, createCabin } = useCreateCabin();
-
   const { isEditing, editCabin } = useEditCabin();
-
   const isWorking = isCreating || isEditing;
 
   function onSubmit(data) {
     const image = typeof data.image === "string" ? data.image : data.image[0];
     if (isEditSession)
     editCabin({ newCabinData: {...data, image }, id: editId },
-      {
-        onSuccess: (data) => {
-          reset();
-        },
-      }
+      reset(),
+      // {
+      //   onSuccess: () => {
+      //     reset();
+      //   },
+      // }
   );
     else createCabin({ ...data, image: image });
     // return true;
