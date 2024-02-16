@@ -24,38 +24,46 @@ function CreateCabinForm({ cabinToEdit={} }) {
 
   function onSubmit(data) {
     const image = typeof data.image === "string" ? data.image : data.image[0];
-    if (isEditSession)
+    if (isEditSession) {
     editCabin({ newCabinData: {...data, image }, id: editId },
-      reset(),
-      // {
-      //   onSuccess: () => {
-      //     reset();
-      //   },
-      // }
+      // reset(),
+      {
+        onSuccess: () => {
+          reset();
+        },
+      }
   );
-    else createCabin({ ...data, image: image });
-    // return true;
+      } else {
+        createCabin({ ...data, image: image },
+      // reset(),
+      {
+        onSuccess: () => {
+          reset();
+        },
+      }
+    );
   }
+}
 
-  function onError(errors){
-    console.log(errors);
+  function onError(){
+    // console.log(errors);
   }
 
   return (
     <Form onSubmit={handleSubmit(onSubmit, onError)}>
-      <FormRow label="Cabin name" error = {errors?.name?.message}>
+      <FormRow label="Cabin name" error = { errors?.name?.message }>
         <Input type="text" id="name" disabled={isCreating} {...register("name", {
           required: "This field is required",
         })} />
       </FormRow>
  
-      <FormRow label="Maximum capacity" error = {errors?.maxCapacity?.message}>
+      <FormRow label="Maximum capacity" error = { errors?.maxCapacity?.message }>
         <Input type="number" id="maxCapacity" disabled={isCreating} {...register("maxCapacity", {
           required: "This field is required",
         })} />
       </FormRow>
 
-      <FormRow label="Regular price" error = {errors?.regularPrice?.message}>
+      <FormRow label="Regular price" error = { errors?.regularPrice?.message }>
         <Input type="number" id="regularPrice" disabled={isCreating} {...register("regularPrice", {
           required: "This field is required",
           min: {
@@ -65,20 +73,20 @@ function CreateCabinForm({ cabinToEdit={} }) {
         })} />
       </FormRow>
 
-      <FormRow label="Discount" error = {errors?.discount?.message}>
-        <Input type="number" id="discount" disabled={isCreating} defaultValue={0} {...register("discount", {
+      <FormRow label="Discount" error = { errors?.discount?.message }>
+        <Input type="number" id="discount" disabled={isWorking} defaultValue={0} {...register("discount", {
           required: "This field is required",
-          validate: value => value <= getValues().regularPrice || "Discount should be less than regular price",
+          validate: (value) => value <= getValues().regularPrice || "Discount should be less than regular price",
         })} />
       </FormRow>
 
-      <FormRow label="Description for website" error = {errors?.description?.message}>
+      <FormRow label="Description for website" error = { errors?.description?.message }>
         <Textarea type="number" id="description" disabled={isCreating} defaultValue="" {...register("description", {
           required: "This field is required",
         })} />
       </FormRow>
 
-      <FormRow label="Cabin photo" error = {errors?.image?.message}>
+      <FormRow label="Cabin photo" error = { errors?.image?.message }>
         <FileInput id="image" accept="image/*" {...register("image", {
           required: isEditSession ? false : "This field is required",
         })} />
