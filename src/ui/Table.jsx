@@ -63,7 +63,7 @@ const Empty = styled.p`
 
 const TableContext = createContext();
 
-export function Table({ columns, children }) {
+function Table({ columns, children }) {
   return (
     <TableContext.Provider value={{ columns }}>
       <StyledTable role="table">{children}</StyledTable>
