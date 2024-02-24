@@ -6,6 +6,7 @@ import Table from "../../ui/Table";
 
 import { formatCurrency } from "../../utils/helpers";
 import { formatDistanceFromNow } from "../../utils/helpers";
+import PropTypes from "prop-types";
 
 const Cabin = styled.div`
   font-size: 1.6rem;
@@ -54,6 +55,8 @@ function BookingRow({
     "checked-out": "silver",
   };
 
+  console.log(bookingId, created_at, numGuests);
+
   return (
     <Table.Row>
       <Cabin>{cabinName}</Cabin>
@@ -82,5 +85,20 @@ function BookingRow({
     </Table.Row>
   );
 }
+
+BookingRow.propTypes = {
+  booking: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    created_at: PropTypes.date,
+    startDate: PropTypes.date,
+    endDate: PropTypes.date,
+    numNights: PropTypes.number.isRequired,
+    numGuests: PropTypes.number.isRequired,
+    totalPrice: PropTypes.number.isRequired,
+    status: PropTypes.string.isRequired,
+    guests: PropTypes.string.isRequired,
+    cabins: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default BookingRow;
