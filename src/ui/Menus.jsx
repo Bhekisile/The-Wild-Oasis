@@ -133,13 +133,13 @@ Menus.propTypes = {
 };
 
 Button.propTypes = {
-  children: PropTypes.object.isRequired,
+  children: PropTypes.string.isRequired,
   icon: PropTypes.any.isRequired,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 }
 
 Toggle.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 }
 
 List.propTypes = {

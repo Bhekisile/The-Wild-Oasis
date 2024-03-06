@@ -22,7 +22,7 @@ export function useBookings() {
   const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
 
   // QUERY
-  const { isLoading, data: { bookings, count } = {},
+  const { isLoading, data: { data: bookings, count } = {},
   error,
  } = useQuery({
       queryKey: ["bookings", filter, sortBy, page],

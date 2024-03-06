@@ -8,8 +8,8 @@ export async function getBookings({ filter, sortBy, page }) {
     );
 
     // FILTER
-    if (filter) query = query.eq(filter.field, filter.value);
-    // query = query[filter.method || "eq"](filter.field, filter.value);
+    // if (filter) query = query.eq(filter.field, filter.value);
+    if (filter) query = query[filter.method || "eq"](filter.field, filter.value);
 
     // SORT
     if (sortBy) query = query.order(sortBy.field, { ascending: sortBy.direction === "asc" });
