@@ -58,7 +58,6 @@ function BookingRow({
 }) {
   const navigate = useNavigate();
   const { checkout, isCheckingOut } = useCheckout();
-  /* eslint-disable */
   const { deleteBooking, isDeleting } = useDeleteBooking();
 
   const statusToTagName = {
@@ -123,7 +122,7 @@ function BookingRow({
           </Menus.List>
         </Menus.Menu>
         <Modal.Window name="delete">
-          <ConfirmDelete resourceName="booking" onConfirm={() => {deleteBooking(bookingId)}} />
+          <ConfirmDelete resourceName="booking" disabled={isDeleting} onConfirm={() => {deleteBooking(bookingId)}} />
         </Modal.Window>
       </Modal>
     </Table.Row>
