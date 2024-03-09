@@ -11,6 +11,7 @@ import DataItem from "../../ui/DataItem";
 import { Flag } from "../../ui/Flag";
 
 import { formatDistanceFromNow, formatCurrency } from "../../utils/helpers";
+import PropTypes from "prop-types";
 
 const StyledBookingDataBox = styled.section`
   /* Box */
@@ -77,9 +78,9 @@ const Price = styled.div`
   margin-top: 2.4rem;
 
   background-color: ${(props) =>
-    props.isPaid ? "var(--color-green-100)" : "var(--color-yellow-100)"};
+    props.ispaid ? "var(--color-green-100)" : "var(--color-yellow-100)"};
   color: ${(props) =>
-    props.isPaid ? "var(--color-green-700)" : "var(--color-yellow-700)"};
+    props.ispaid ? "var(--color-green-700)" : "var(--color-yellow-700)"};
 
   & p:last-child {
     text-transform: uppercase;
@@ -114,7 +115,7 @@ function BookingDataBox({ booking }) {
     totalPrice,
     hasBreakfast,
     observations,
-    isPaid,
+    ispaid,
     guests: { fullName: guestName, email, country, countryFlag, nationalID },
     cabins: { name: cabinName },
   } = booking;
@@ -163,7 +164,7 @@ function BookingDataBox({ booking }) {
           {hasBreakfast ? "Yes" : "No"}
         </DataItem>
 
-        <Price isPaid={isPaid}>
+        <Price ispaid={ispaid}>
           <DataItem icon={<HiOutlineCurrencyDollar />} label={`Total price`}>
             {formatCurrency(totalPrice)}
 
@@ -173,7 +174,7 @@ function BookingDataBox({ booking }) {
               )} breakfast)`}
           </DataItem>
 
-          <p>{isPaid ? "Paid" : "Will pay at property"}</p>
+          <p>{ispaid ? "Paid" : "Will pay at property"}</p>
         </Price>
       </Section>
 
@@ -183,5 +184,23 @@ function BookingDataBox({ booking }) {
     </StyledBookingDataBox>
   );
 }
+
+BookingDataBox.propTypes = {
+  booking: PropTypes.shape({
+    created_at: PropTypes.string,
+    startDate: PropTypes.func,
+    endDate: PropTypes.date,
+    numNights: PropTypes.number.isRequired,
+    numGuests: PropTypes.number.isRequired,
+    cabins: PropTypes.object.isRequired,
+    guests: PropTypes.object.isRequired,
+    cabinPrice: PropTypes.number.isRequired,
+    extrasPrice: PropTypes.number.isRequired,
+    totalPrice: PropTypes.number.isRequired,
+    hasBreakfast: PropTypes.bool,
+    observations: PropTypes.bool,
+    ispaid: PropTypes.bool,
+  }).isRequired,
+};
 
 export default BookingDataBox;

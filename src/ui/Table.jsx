@@ -102,19 +102,19 @@ Table.Footer = Footer;
 
 Table.propTypes = {
   columns: PropTypes.string.isRequired,
-  children: PropTypes.object.isRequired,
+  children: PropTypes.array.isRequired,
 }
 
 Header.propTypes = {
-  children: PropTypes.object.isRequired,
+  children: PropTypes.array.isRequired,
 }
 
 Row.propTypes = {
-  children: PropTypes.object.isRequired,
+  children: PropTypes.array.isRequired,
 }
 
 Body.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.array.isRequired,
   render: PropTypes.func.isRequired,
 }
 
