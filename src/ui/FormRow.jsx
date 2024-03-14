@@ -51,7 +51,7 @@ function FormRow({ label, error, children }) {
 FormRow.propTypes = {
   label: PropTypes.string,
   error: PropTypes.string,
-  children: PropTypes.object.isRequired,
+  children: PropTypes.any.isRequired,
 };
 
 export default FormRow;
