@@ -42,4 +42,4 @@ DarkModeProvider.propTypes = {
   children: PropTypes.any,
 }
 
-export { DarkModeProvider, useDarkMode }
+export { DarkModeProvider, useDarkMode };

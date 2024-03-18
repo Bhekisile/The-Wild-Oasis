@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import { formatCurrency } from "../../utils/helpers";
 
 function Stats({ bookings, confirmedStays, numDays, cabinCount }) {
-  console.log("stats", numDays, cabinCount)
   // 1.
   const numBookings = bookings?.length;
 
@@ -50,7 +49,7 @@ function Stats({ bookings, confirmedStays, numDays, cabinCount }) {
 
 Stats.propTypes = {
   bookings: PropTypes.array,
-  confirmedStays: PropTypes.bool,
+  confirmedStays: PropTypes.array,
   numDays: PropTypes.number.isRequired,
   cabinCount: PropTypes.number.isRequired,
 }
