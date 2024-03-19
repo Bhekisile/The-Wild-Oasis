@@ -61,7 +61,7 @@ function Stat({ icon, title, value, color }) {
 Stat.propTypes = {
   icon: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
-  value: PropTypes.string,
+  value: PropTypes.any,
   color: PropTypes.string.isRequired
 }
 
