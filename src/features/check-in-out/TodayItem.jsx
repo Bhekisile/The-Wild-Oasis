@@ -18,3 +18,16 @@ const StyledTodayItem = styled.li`
 const Guest = styled.div`
   font-weight: 500;
 `;
+
+console.log(Guest, StyledTodayItem);
+
+function TodayItem() {
+  return (
+    <div>
+      
+    </div>
+  )
+}
+
+export default TodayItem;
+
