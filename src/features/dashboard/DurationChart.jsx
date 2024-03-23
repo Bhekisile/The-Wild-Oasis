@@ -178,7 +178,7 @@ function DurationChart({ confirmedStays }) {
 }
 
 DurationChart.propTypes = {
-  confirmedStays: PropTypes.bool,
+  confirmedStays: PropTypes.array,
 }
 
 export default DurationChart;
