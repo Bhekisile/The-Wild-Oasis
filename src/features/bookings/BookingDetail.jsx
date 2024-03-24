@@ -12,7 +12,7 @@ import { useBooking } from "./useBooking";
 import { useNavigate } from "react-router-dom";
 import { HiArrowUpOnSquare } from "react-icons/hi2";
 import { useCheckout } from "../check-in-out/useCheckout";
-import ConfirmDelete from "../../ui/COnfirmDelete";
+import ConfirmDelete from "../../ui/ConfirmDelete";
 import Modal from "../../ui/Modal";
 import Empty from "../../ui/Empty";
 import { useDeleteBooking } from "./useDeleteBooking";
