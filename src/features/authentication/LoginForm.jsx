@@ -8,8 +8,8 @@ import SpinnerMini from "../../ui/SpinnerMini";
 // import { login } from "../../services/ApiAuth";
 
 function LoginForm() {
-  const [email, setEmail] = useState("bhekisilejozi@gmail.com");
-  const [password, setPassword] = useState("Bheki@123");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const { login, isLoading } = useLogin();
 
   function handleSubmit(e) {
